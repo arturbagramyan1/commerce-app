@@ -1,0 +1,16 @@
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    /* Center items in the container */
+    padding: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    /* Add a subtle background to the container */
+    border-radius: 8px;
+    /* Rounded corners for the container */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+}

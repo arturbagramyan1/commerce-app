@@ -1,0 +1,60 @@
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    max-width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    /* Prevent content overflow */
+    text-overflow: ellipsis;
+    /* Handle long text gracefully */
+    white-space: nowrap;
+    /* Prevent text wrapping */
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    /* Maintain aspect ratio */
+    max-height: 200px;
+    /* Prevent overly tall images */
+    border-radius: 4px;
+    margin-bottom: 12px;
+    background-color: #f9f9f9;
+    /* Add a subtle background color */
+    object-fit: contain;
+    /* Ensure the entire image fits */
+}
+
+.product-title {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    /* Handle long titles */
+    white-space: normal;
+    /* Allow wrapping for titles */
+    word-wrap: break-word;
+    /* Break long words if necessary */
+    overflow: hidden;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #27ae60;
+    margin-top: 8px;
+}
