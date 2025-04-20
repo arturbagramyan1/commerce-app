@@ -9,12 +9,30 @@ function ProductsList() {
 	const [products, setProducts] = useState([]);
 	const [isBasketMode, toggleBasketMode] = useState(false);
 	const [boughtProducts, setBoughtProducts] = useState([]);
-    
+
 	useEffect(() => {
 		fetchProducts().then((data) => {
 			setProducts(data);
 		});
 	}, []);
+
+	const incrementProduct = (id) => {
+		setBoughtProducts((prev) =>
+			prev.map((item) =>
+				item.id === id ? { ...item, count: item.count + 1 } : item
+			)
+		);
+	};
+
+	const decrementProduct = (id) => {
+		setBoughtProducts((prev) =>
+			prev.map((item) =>
+				item.id === id && item.count > 1
+					? { ...item, count: item.count - 1 }
+					: item
+			)
+		);
+	};
 
 	const addToBasket = (product) => {
 		setBoughtProducts((prev) => {
@@ -38,7 +56,12 @@ function ProductsList() {
 			{isBasketMode ? (
 				<div>
 					{boughtProducts.map((boughtProd) => (
-						<Basket {...boughtProd} key={boughtProd.id} />
+						<Basket
+							{...boughtProd}
+							key={boughtProd.id}
+							decrementProduct={decrementProduct}
+							incrementProduct={incrementProduct}
+						/>
 					))}
 				</div>
 			) : (
