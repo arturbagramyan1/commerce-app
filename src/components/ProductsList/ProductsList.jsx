@@ -68,7 +68,7 @@ function ProductsList() {
 				<div className="products-container">
 					{products.map((prod) => (
 						<ProductCard
-							buyProduct={addToBasket}
+							addToBasket={addToBasket}
 							key={prod.id}
 							id={prod.id}
 							title={prod.title}

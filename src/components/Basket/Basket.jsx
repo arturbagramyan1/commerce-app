@@ -1,6 +1,7 @@
 import "./Basket.css";
 
 function Basket({
+	
 	id,
 	title,
 	price,
