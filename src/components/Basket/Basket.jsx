@@ -18,7 +18,9 @@ function Basket({
 			<p className="count">{count}</p>
 			<button onClick={() => incrementProduct(id)}>+</button>
 			<button onClick={() => decrementProduct(id)}>-</button>
-			<button onClick={() => deleteProduct(id)}>Remove</button>
+			<button className="deletebtn" onClick={() => deleteProduct(id)}>
+				Remove
+			</button>
 		</div>
 	);
 }
