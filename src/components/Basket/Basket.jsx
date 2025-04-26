@@ -1,7 +1,6 @@
 import "./Basket.css";
 
 function Basket({
-	
 	id,
 	title,
 	price,
@@ -9,6 +8,7 @@ function Basket({
 	count,
 	incrementProduct,
 	decrementProduct,
+	deleteProduct,
 }) {
 	return (
 		<div className="product-card" key={id}>
@@ -18,6 +18,7 @@ function Basket({
 			<p className="count">{count}</p>
 			<button onClick={() => incrementProduct(id)}>+</button>
 			<button onClick={() => decrementProduct(id)}>-</button>
+			<button onClick={() => deleteProduct(id)}>Remove</button>
 		</div>
 	);
 }

@@ -9,6 +9,22 @@ function ProductsList() {
 	const [products, setProducts] = useState([]);
 	const [isBasketMode, toggleBasketMode] = useState(false);
 	const [boughtProducts, setBoughtProducts] = useState([]);
+	const [totalPrice, setTotalPrice] = useState(0);
+
+	const calculateTotalPrice = () => {
+		const total = boughtProducts.reduce((acc, product) => {
+			return acc + product.price * product.count;
+		}, 0);
+		setTotalPrice(total);
+	};
+
+	const deleteProduct = (id) => {
+		setBoughtProducts((prev) => prev.filter((item) => item.id !== id));
+	};
+
+	useEffect(() => {
+		calculateTotalPrice();
+	}, [boughtProducts]);
 
 	useEffect(() => {
 		fetchProducts().then((data) => {
@@ -54,16 +70,20 @@ function ProductsList() {
 			</button>
 
 			{isBasketMode ? (
-				<div>
-					{boughtProducts.map((boughtProd) => (
-						<Basket
-							{...boughtProd}
-							key={boughtProd.id}
-							decrementProduct={decrementProduct}
-							incrementProduct={incrementProduct}
-						/>
-					))}
-				</div>
+				<>
+					<h3>Total cost: {totalPrice} </h3>
+					<div>
+						{boughtProducts.map((boughtProd) => (
+							<Basket
+								{...boughtProd}
+								key={boughtProd.id}
+								decrementProduct={decrementProduct}
+								incrementProduct={incrementProduct}
+								deleteProduct={deleteProduct}
+							/>
+						))}
+					</div>
+				</>
 			) : (
 				<div className="products-container">
 					{products.map((prod) => (
